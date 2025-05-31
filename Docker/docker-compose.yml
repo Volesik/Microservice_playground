@@ -33,6 +33,19 @@ services:
         - "27017:27017"
       volumes:
         - "mongodb_data:data/db"
+    mssql:
+      image: mcr.microsoft.com/mssql/server:2022-latest
+      container_name: mssql
+      restart: always
+      ports:
+        - '1433:1433'
+      environment:
+        - ACCEPT_EULA=Y
+        - MSSQL_USERNAME=admin
+        - MSSQL_SA_PASSWORD=Admin@secure1!
+        - MSSQL_PID=Express
+      volumes:
+      - mssql_data:/var/opt/mssql
 
 volumes:
   zookeeper_data:
@@ -40,6 +53,8 @@ volumes:
   kafka_data:
     driver: local
   mongo_data:
+    driver: local
+  mssql_data:
     driver: local
    
 networks:
