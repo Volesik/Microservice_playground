@@ -10,7 +10,7 @@ services:
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
   kafka:
-    image: docker.io/bitnami/kafka:3.5
+    image: docker.io/bitnami/kafka:3.9
     container_name: kafka
     ports:
       - "9092:9092"
@@ -25,23 +25,21 @@ services:
       - KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=true
     depends_on:
       - zookeeper
-    mongo-container:
-      image: mongo:latest
-      container_name: mongo-container
+    mongo:
+      image: mongo:8.0.9
+      container_name: mongo
       restart: always
       ports:
         - "27017:27017"
       volumes:
-        - "mongodb_data_container:data/db"
+        - "mongodb_data:data/db"
 
-
-      
 volumes:
   zookeeper_data:
     driver: local
   kafka_data:
     driver: local
-  mongo_data_container:
+  mongo_data:
     driver: local
    
 networks:
