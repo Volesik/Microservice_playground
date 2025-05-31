@@ -25,27 +25,26 @@ services:
       - KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=true
     depends_on:
       - zookeeper
-    mongo:
-      image: mongo:8.0.9
-      container_name: mongo
-      restart: always
-      ports:
-        - "27017:27017"
-      volumes:
-        - "mongodb_data:data/db"
-    mssql:
-      image: mcr.microsoft.com/mssql/server:2022-latest
-      container_name: mssql
-      restart: always
-      ports:
-        - '1433:1433'
-      environment:
-        - ACCEPT_EULA=Y
-        - MSSQL_USERNAME=admin
-        - MSSQL_SA_PASSWORD=Admin@secure1!
-        - MSSQL_PID=Express
-      volumes:
-      - mssql_data:/var/opt/mssql
+  mongo:
+    image: mongo:8.0.9
+    container_name: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - "mongo_data:/data/db"
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql
+    restart: always
+    ports:
+      - '1433:1433'
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Admin@secure1!
+      - MSSQL_PID=Express
+    volumes:
+    - mssql_data:/var/opt/mssql
 
 volumes:
   zookeeper_data:
