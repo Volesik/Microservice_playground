@@ -1,0 +1,6 @@
+@Film.Cmd.Api_HostAddress = http://localhost:5269
+
+GET {{Film.Cmd.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

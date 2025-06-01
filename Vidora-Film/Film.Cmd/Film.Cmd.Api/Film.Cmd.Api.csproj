@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="8.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CQRS-ES\CQRS.Core\CQRS.Core.csproj" />
+    <ProjectReference Include="..\..\Film.Common\Film.Common.csproj" />
+    <ProjectReference Include="..\Film.Cmd.Domain\Film.Cmd.Domain.csproj" />
+    <ProjectReference Include="..\Film.Cmd.Infrastructure\Film.Cmd.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
